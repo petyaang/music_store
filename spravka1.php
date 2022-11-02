@@ -39,6 +39,15 @@ echo '<option value="'. $p['empl_id'] .'">'.$p['empl_name'].'</option>';
  echo "<tr><th>ID</th><th>Клиент</th><th>Служител</th><th>Дата</th></tr>";
  while($row = mysqli_fetch_array($result)){
  echo "<tr><td>".$row['sale_id']."</td><td>".$row['client_name']."</td><td>".$row['empl_name']."</td><td>".$row['sale_date']."</td></tr>"; }
+ 
+ $result1 = mysqli_query($dbConn, "SELECT COUNT(sale_id) AS sales
+                                  FROM Sales s
+								  JOIN Employee e
+								  ON s.empl_id=e.empl_id
+								  WHERE s.empl_id='$empl_id'");
+ while($row = mysqli_fetch_array($result1)){
+ echo "Общ брoй продажби за този служител: ".$row['sales'];
+ }
  }
 ?>
 </body>

@@ -15,8 +15,9 @@
  <strong><a href="updateclient.php">6. Обнови в Клиенти</a> </strong><br>
  <strong><a href="updateemployee.php">7. Обнови в Служители </a> </strong><br>
  <strong><a href="updatemerchandise.php">8. Обнови в Стоки</a> </strong><br>
- <strong><a href="updatesales.php">9. Обнови в Продажби</a> </strong><br>
- <strong><a href="updatemerchsale.php">10. Обнови в Стоки на продажба</a> </strong><br><br><br>
+ <strong><a href="updatemerchamount.php">9. Обнови в Наличности на стоки</a> </strong><br>
+ <strong><a href="updatesales.php">10. Обнови в Продажби</a> </strong><br>
+ <strong><a href="updatemerchsale.php">11. Обнови в Стоки на продажба</a> </strong><br><br><br>
  <a href="index.php">Върни се обратно към меню</a><br>
  </body>
 </html>

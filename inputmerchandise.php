@@ -43,7 +43,6 @@ while($e = mysqli_fetch_array($sql))
 echo '<option value="'. $e['company_id'].'">'.$e['company_name'].'</option>';
 ?>
 </select><br>
-Цена: <input type="text" name="price"/><br>
 
 <input type="submit" name="submit" value="Въведи"/> <a href="musicstore_input.php">Върни се обратно</a><br>
 </pre>
@@ -62,12 +61,11 @@ echo '<option value="'. $e['company_id'].'">'.$e['company_name'].'</option>';
  $genre_id = $_POST['genre_name'];}
  if (isset($_POST['company_name'])){
  $company_id = $_POST['company_name'];}
- $price = $_POST['price'];
 
  
- if (!empty($merchtype_id)&&!empty($year)&&!empty($title)&&!empty($artist_id)&&!empty($genre_id)&&!empty($company_id)&&!empty($price))
+ if (!empty($merchtype_id)&&!empty($year)&&!empty($title)&&!empty($artist_id)&&!empty($genre_id)&&!empty($company_id))
  {
- $sql="INSERT INTO Merchandise (merchtype_id, year, title, artist_id, genre_id, company_id, price) VALUES ('$merchtype_id', '$year', '$title', '$artist_id', '$genre_id', '$company_id', '$price')";
+ $sql="INSERT INTO Merchandise (merchtype_id, year, title, artist_id, genre_id, company_id) VALUES ('$merchtype_id', '$year', '$title', '$artist_id', '$genre_id', '$company_id')";
  $result = mysqli_query($dbConn,$sql);
  if (!$result)
  {
@@ -78,7 +76,7 @@ echo '<option value="'. $e['company_id'].'">'.$e['company_name'].'</option>';
  else
  echo "Не сте въвели данни!";
  
- $result = mysqli_query($dbConn, "SELECT m.merch_id, t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, m.price
+ $result = mysqli_query($dbConn, "SELECT m.merch_id, t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name
                                   FROM Merchandise m
 								  JOIN Merchandise_types t
 								  ON m.merchtype_id=t.merchtype_id
@@ -90,9 +88,9 @@ echo '<option value="'. $e['company_id'].'">'.$e['company_name'].'</option>';
 								  ON m.company_id=c.company_id
 								  ORDER BY merch_id");
  echo "<table border='2' align='center'>";
- echo "<tr><th>ID</th><th>Вид стока</th><th>Година на издаване</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th><th>Цена</th></tr>";
+ echo "<tr><th>ID</th><th>Вид стока</th><th>Година на издаване</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th></tr>";
  while($row = mysqli_fetch_array($result)){
- echo "<tr><td>".$row['merch_id']."</td><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td><td>".$row['price']."</td></tr>"; }
+ echo "<tr><td>".$row['merch_id']."</td><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td></tr>"; }
  }
 ?>
 </body>
