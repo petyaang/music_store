@@ -15,8 +15,9 @@
  <strong><a href="deleteclient.php">6. Изтрий от клиенти</a> </strong><br>
  <strong><a href="deleteemployee.php">7. Изтрий от служители</a> </strong><br>
  <strong><a href="deletemerchandise.php">8. Изтрий от стоки</a> </strong><br>
- <strong><a href="deletesales.php">9. Изтрий от продажби</a> </strong><br>
- <strong><a href="deletemerchsale.php">10. Изтрий от стоки на продажба</a> </strong><br><br><br>
+ <strong><a href="deletemerchamount.php">9. Изтрий от наличности</a> </strong><br>
+ <strong><a href="deletesales.php">10. Изтрий от продажби</a> </strong><br>
+ <strong><a href="deletemerchsale.php">11. Изтрий от стоки на продажба</a> </strong><br><br><br>
  <a href="index.php">Върни се обратно към меню</a><br>
  </body>
 </html>

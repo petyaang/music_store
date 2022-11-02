@@ -16,8 +16,9 @@
  <strong><a href="createclient.php">7. Създай таблица Клиенти</a> </strong><br>
  <strong><a href="createemployee.php">8. Създай таблица Служители</a> </strong><br>
  <strong><a href="createmerchandise.php">9. Създай таблица Стоки</a> </strong> <br>
- <strong><a href="createsales.php">10. Създай таблица Продажби</a> </strong><br>
- <strong><a href="createmerchsale.php">11. Създай таблица Стоки на продажба</a> </strong><br><br><br>
+ <strong><a href="createmerchamount.php">10. Създай таблица Наличности на стоки</a> </strong> <br>
+ <strong><a href="createsales.php">11. Създай таблица Продажби</a> </strong><br>
+ <strong><a href="createmerchsale.php">12. Създай таблица Стоки на продажба</a> </strong><br><br><br>
  <a href="index.php">Върни се обратно към меню</a><br>
  </body>
 </html>

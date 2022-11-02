@@ -27,22 +27,35 @@ echo '<option value="'. $p['genre_id'] .'">'.$p['genre_name'].'</option>';
  if (isset($_POST['genre_name'])){
  $genre_id = $_POST['genre_name'];}
  
- $result = mysqli_query($dbConn, "SELECT m.merch_id, t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, m.price
-                                  FROM Merchandise m
-								  JOIN Merchandise_types t
-								  ON m.merchtype_id=t.merchtype_id
-								  JOIN Artist a
-								  ON m.artist_id=a.artist_id
-								  JOIN Genre g
-								  ON m.genre_id=g.genre_id
-								  JOIN Company c
-								  ON m.company_id=c.company_id 
-								  WHERE m.genre_id='$genre_id'
-								  ORDER BY merch_id");
+ $result = mysqli_query($dbConn, "SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, e.price, e.merch_amount
+FROM Merch_amount e
+JOIN Merchandise m
+ON e.merch_id=m.merch_id
+JOIN Merchandise_types t
+ON m.merchtype_id=t.merchtype_id
+JOIN Artist a
+ON m.artist_id=a.artist_id
+JOIN Genre g
+ON m.genre_id=g.genre_id
+JOIN Company c
+ON m.company_id=c.company_id
+WHERE g.genre_id='$genre_id'
+ORDER BY m.year");
  echo "<table border='2' align='center'>";
- echo "<tr><th>ID</th><th>Вид стока</th><th>Година</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th><th>Цена</th></tr>";
+ echo "<tr><th>Вид стока</th><th>Година</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th><th>Цена</th><th>Наличност</th></tr>";
  while($row = mysqli_fetch_array($result)){
- echo "<tr><td>".$row['merch_id']."</td><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td><td>".$row['price']."</td></tr>"; }
+ echo "<tr><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td><td>".$row['price']."</td><td>".$row['merch_amount']."</td></tr>"; }
+ 
+ $result1 = mysqli_query($dbConn, "SELECT SUM(price) AS total 
+FROM Merch_amount e
+JOIN Merchandise m
+ON e.merch_id=m.merch_id
+JOIN Genre g
+ON m.genre_id=g.genre_id
+WHERE g.genre_id='$genre_id'");
+ while($row = mysqli_fetch_array($result1)){
+ echo "Обща цена за всички албуми от този жанр: ".$row['total']." лв.";
+ }
  }
 ?>
 </body>

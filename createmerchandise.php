@@ -9,7 +9,6 @@
  artist_id INT(4) NOT NULL,
  genre_id INT(4) NOT NULL,
  company_id INT(4) NOT NULL,
- price DOUBLE(6,2) NOT NULL,
  PRIMARY KEY (merch_id),
  FOREIGN KEY (merchtype_id) REFERENCES Merchandise_types (merchtype_id) ON DELETE CASCADE,
  FOREIGN KEY (artist_id) REFERENCES Artist (artist_id) ON DELETE CASCADE,

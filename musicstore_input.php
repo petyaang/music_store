@@ -15,8 +15,9 @@
  <strong><a href="inputclient.php">6. Въведи клиенти</a> </strong><br>
  <strong><a href="inputemployee.php">7. Въведи служители</a> </strong><br>
  <strong><a href="inputmerchandise.php">8. Въведи стоки</a> </strong><br>
- <strong><a href="inputsales.php">9. Въведи продажби</a> </strong><br>
- <strong><a href="inputmerchsale.php">10. Въведи стоки на продажба</a> </strong><br><br><br>
+ <strong><a href="inputmerchamount.php">9. Въведи наличности на стоки</a> </strong><br>
+ <strong><a href="inputsales.php">10. Въведи продажби</a> </strong><br>
+ <strong><a href="inputmerchsale.php">11. Въведи стоки на продажба</a> </strong><br><br><br>
  <a href="index.php">Върни се обратно към меню</a><br>
  </body>
 </html>

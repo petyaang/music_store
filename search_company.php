@@ -27,22 +27,24 @@ echo '<option value="'. $p['company_id'] .'">'.$p['company_name'].'</option>';
  if (isset($_POST['company_name'])){
  $company_id = $_POST['company_name'];}
  
- $result = mysqli_query($dbConn, "SELECT m.merch_id, t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, m.price
-                                  FROM Merchandise m
-								  JOIN Merchandise_types t
-								  ON m.merchtype_id=t.merchtype_id
-								  JOIN Artist a
-								  ON m.artist_id=a.artist_id
-								  JOIN Genre g
-								  ON m.genre_id=g.genre_id
-								  JOIN Company c
-								  ON m.company_id=c.company_id
-								  WHERE m.company_id='$company_id'
-								  ORDER BY merch_id");
+ $result = mysqli_query($dbConn, "SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, e.price, e.merch_amount
+FROM Merch_amount e
+JOIN Merchandise m
+ON e.merch_id=m.merch_id
+JOIN Merchandise_types t
+ON m.merchtype_id=t.merchtype_id
+JOIN Artist a
+ON m.artist_id=a.artist_id
+JOIN Genre g
+ON m.genre_id=g.genre_id
+JOIN Company c
+ON m.company_id=c.company_id
+WHERE c.company_id='$company_id'
+ORDER BY a.artist_id, m.title");
  echo "<table border='2' align='center'>";
- echo "<tr><th>ID</th><th>Вид стока</th><th>Година</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th><th>Цена</th></tr>";
+ echo "<tr><th>Вид стока</th><th>Година</th><th>Заглавие</th><th>Изпълнител</th><th>Жанр</th><th>Музикална компания</th><th>Цена</th><th>Наличност</th></tr>";
  while($row = mysqli_fetch_array($result)){
- echo "<tr><td>".$row['merch_id']."</td><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td><td>".$row['price']."</td></tr>"; }
+ echo "<tr><td>".$row['merchtype_name']."</td><td>".$row['year']."</td><td>".$row['title']."</td><td>".$row['artist_name']."</td><td>".$row['genre_name']."</td><td>".$row['company_name']."</td><td>".$row['price']."</td><td>".$row['merch_amount']."</td></tr>"; }
  }
 ?>
 </body>

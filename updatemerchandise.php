@@ -51,7 +51,6 @@ while($p = mysqli_fetch_array($sql))
 echo '<option value="'. $p['company_id'] .'">'.$p['company_name'].'</option>';
 ?>
 </select><br><br>
-Цена: <input type="text" name="price"/><br><br>
 
 <input type="submit" name="submit" value="Редактирай"/><br><br>
 </pre>
@@ -73,7 +72,6 @@ if (isset($_POST["submit"]))
  $genre_id = $_POST['genre_name'];}
  if (isset($_POST['company_name'])){
  $company_id = $_POST['company_name'];}
- $price = $_POST['price'];
  
  $sql = "UPDATE Merchandise
          SET merchtype_id='$merchtype_id',
@@ -82,10 +80,9 @@ if (isset($_POST["submit"]))
 		 artist_id='$artist_id',
 		 genre_id='$genre_id',
 		 company_id='$company_id',
-		 price='$price'
          WHERE merch_id='$merch_id'";
  mysqli_query($dbConn,$sql);
- $result = mysqli_query($dbConn,"SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, m.price
+ $result = mysqli_query($dbConn,"SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name
                                  FROM Merchandise m
 								 JOIN Merchandise_types t
 								 ON m.merchtype_id=t.merchtype_id
@@ -99,7 +96,7 @@ if (isset($_POST["submit"]))
  echo "Стоки в музикалния магазин:";
  echo "<ol>";
  while($row = mysqli_fetch_array($result)){
- echo "<li>".$row['merchtype_name'].", ".$row['year'].", ".$row['title'].", ".$row['artist_name'].", ".$row['genre_name'].", ".$row['company_name'].", ".$row['price']."</li>"; }
+ echo "<li>".$row['merchtype_name'].", ".$row['year'].", ".$row['title'].", ".$row['artist_name'].", ".$row['genre_name'].", ".$row['company_name']."</li>"; }
  echo "</ol>";
  }
  

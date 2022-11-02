@@ -32,7 +32,7 @@ if (isset($_POST["submit"]))
  die('Грешка при изтриване на записа. <br>');
  echo "Записът е изтрит!<br><br>";
  
- $result = mysqli_query($dbConn,"SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name, m.price
+ $result = mysqli_query($dbConn,"SELECT t.merchtype_name, m.year, m.title, a.artist_name, g.genre_name, c.company_name
                                  FROM Merchandise m
 								 JOIN Merchandise_types t
 								 ON m.merchtype_id=t.merchtype_id
@@ -46,7 +46,7 @@ if (isset($_POST["submit"]))
  echo "Стоки в музикалния магазин:";
  echo "<ol>";
  while($row = mysqli_fetch_array($result)){
- echo "<li>".$row['merchtype_name'].", ".$row['year'].", ".$row['title'].", ".$row['artist_name'].", ".$row['genre_name'].", ".$row['company_name'].", ".$row['price']."</li>"; }
+ echo "<li>".$row['merchtype_name'].", ".$row['year'].", ".$row['title'].", ".$row['artist_name'].", ".$row['genre_name'].", ".$row['company_name']."</li>"; }
  echo "</ol>";
  }
  
